@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Portafolio profesional de Liz Ardila. Desarrollo de software, Python y desarrollo web."
+    >
+
+    <meta
+        name="author"
+        content="Liz Ardila"
+    >
+
+    <title>
+        Liz Ardila | Desarrolladora de Software
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         NAVBAR
+    ====================================== -->
+
+    <nav class="navbar">
+
+        <div class="container navbar-content">
+
+            <a
+                href="#inicio"
+                class="logo"
+            >
+                LA.
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="#inicio">
+                    Inicio
+                </a>
+
+                <a href="#proyectos">
+                    Proyectos
+                </a>
+
+                <a href="#habilidades">
+                    Habilidades
+                </a>
+
+                <a href="#sobre-mi">
+                    Sobre mí
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================
+         HERO
+    ====================================== -->
+
+    <header
+        id="inicio"
+        class="hero-section"
+    >
+
+        <div class="container hero">
+
+            <div class="hero-content">
+
+
+                <p class="hero-eyebrow">
+                    DESARROLLO DE SOFTWARE · PYTHON · WEB
+                </p>
+
+
+                <h1>
+                    Hola, soy
+                    <span>Liz Ardila.</span>
+                </h1>
+
+
+                <p class="hero-profesion">
+                    Técnica en Desarrollo de Software
+                </p>
+
+
+                <p class="hero-description">
+                    Creo soluciones digitales funcionales, limpias y
+                    eficientes, combinando programación, desarrollo web
+                    y automatización para convertir ideas en proyectos reales.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#proyectos"
+                        class="btn btn-primary"
+                    >
+                        Ver proyectos
+                        <span>→</span>
+                    </a>
+
+
+                    <a
+                        href="#sobre-mi"
+                        class="btn btn-secondary"
+                    >
+                        Sobre mí
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         CONTENIDO
+    ====================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             PROYECTOS
+        ====================================== -->
+
+        <section
+            id="proyectos"
+            class="section"
+        >
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        PORTAFOLIO
+                    </p>
+
+                    <h2>
+                        Proyectos destacados
+                    </h2>
+
+                    <p>
+                        Una selección de proyectos desarrollados para
+                        practicar programación, automatización y desarrollo web.
+                    </p>
+
+                </div>
+
+
+                <!-- PYTHON -->
+
+                <div class="project-category">
+
+                    <h3 class="category-title">
+                        Python
+                    </h3>
+
+
+                    <div class="projects-grid">
+
+                        {% for proyecto in proyectos_python %}
+
+                        <article class="project-card">
+
+
+                            <div class="project-card-top">
+
+                                <span class="project-number">
+                                    {{ "%02d"|format(loop.index) }}
+                                </span>
+
+                                <span class="project-category">
+                                    {{ proyecto.tipo }}
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                {{ proyecto.nombre }}
+                            </h3>
+
+
+                            <p class="project-description">
+                                {{ proyecto.descripcion }}
+                            </p>
+
+
+                            <div class="technologies">
+
+                                {% for tecnologia in proyecto.tecnologias %}
+
+                                <span>
+                                    {{ tecnologia }}
+                                </span>
+
+                                {% endfor %}
+
+                            </div>
+
+
+                            <a
+                                href="{{ url_for('proyecto', proyecto_id=proyecto.id) }}"
+                                class="project-link"
+                            >
+                                Ver proyecto
+                                <span>↗</span>
+                            </a>
+
+
+                        </article>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- DESARROLLO WEB -->
+
+                <div class="project-category">
+
+                    <h3 class="category-title">
+                        Desarrollo Web
+                    </h3>
+
+
+                    <div class="projects-grid">
+
+                        {% for proyecto in proyectos_web %}
+
+                        <article class="project-card">
+
+
+                            <div class="project-card-top">
+
+                                <span class="project-number">
+                                    {{ "%02d"|format(loop.index) }}
+                                </span>
+
+                                <span class="project-category">
+                                    {{ proyecto.tipo }}
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                {{ proyecto.nombre }}
+                            </h3>
+
+
+                            <p class="project-description">
+                                {{ proyecto.descripcion }}
+                            </p>
+
+
+                            <div class="technologies">
+
+                                {% for tecnologia in proyecto.tecnologias %}
+
+                                <span>
+                                    {{ tecnologia }}
+                                </span>
+
+                                {% endfor %}
+
+                            </div>
+
+
+                            <a
+                                href="{{ url_for('proyecto', proyecto_id=proyecto.id) }}"
+                                class="project-link"
+                            >
+                                Ver proyecto
+                                <span>↗</span>
+                            </a>
+
+
+                        </article>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             HABILIDADES
+        ====================================== -->
+
+        <section
+            id="habilidades"
+            class="section section-light"
+        >
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        TECNOLOGÍAS
+                    </p>
+
+                    <h2>
+                        Habilidades
+                    </h2>
+
+                    <p>
+                        Tecnologías y herramientas que estoy utilizando
+                        para desarrollar y ampliar mis proyectos.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-grid">
+
+                    {% for habilidad in habilidades %}
+
+                    <div class="skill">
+
+                        <strong>
+                            {{ habilidad.nombre }}
+                        </strong>
+
+                        <span>
+                            {{ habilidad.nivel }}
+                        </span>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SOBRE MÍ
+        ====================================== -->
+
+        <section
+            id="sobre-mi"
+            class="section"
+        >
+
+            <div class="container about">
+
+
+                <div class="about-content">
+
+                    <p class="section-label">
+                        SOBRE MÍ
+                    </p>
+
+
+                    <h2>
+                        Construyendo mi camino
+                        en tecnología.
+                    </h2>
+
+
+                    <p>
+                        Soy Técnica en Desarrollo de Software y actualmente
+                        estoy fortaleciendo mis conocimientos en programación,
+                        desarrollo web y automatización.
+                    </p>
+
+
+                    <p>
+                        Me interesa especialmente crear soluciones prácticas
+                        que combinen tecnología, organización y creatividad.
+                        Cada proyecto de este portafolio forma parte de mi
+                        proceso de aprendizaje y evolución profesional.
+                    </p>
+
+
+                </div>
+
+
+                <div class="about-highlight">
+
+
+                    <div class="highlight-item">
+
+                        <span>
+                            01
+                        </span>
+
+                        <p>
+                            Aprendizaje continuo
+                        </p>
+
+                    </div>
+
+
+                    <div class="highlight-item">
+
+                        <span>
+                            02
+                        </span>
+
+                        <p>
+                            Soluciones prácticas
+                        </p>
+
+                    </div>
+
+
+                    <div class="highlight-item">
+
+                        <span>
+                            03
+                        </span>
+
+                        <p>
+                            Desarrollo digital
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+
+            <div>
+
+                <p class="footer-name">
+                    Liz Ardila
+                </p>
+
+                <p>
+                    Técnica en Desarrollo de Software
+                </p>
+
+            </div>
+
+
+            <p class="footer-copy">
+                © 2026 Liz Ardila · Portafolio profesional
+            </p>
+
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
